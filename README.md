@@ -1,90 +1,105 @@
-# fronSOL Pods
+> The existing README.md file was outdated and did not reflect the current state of the project. It has been replaced with this new, comprehensive README.md.
 
-A Work-from-Coffee inspired Solana dApp that rewards disciplined Pomodoro sessions. Focus, rest, and cancelled sessions are recorded on-chain so that productive contributors accumulate points while procrastination results in penalties.
+# frons.id
 
-## Overview
+![frons.id Logo](web/public/frons-logo.png)
 
-- **On-chain program** – Anchor program `frons` manages user productivity profiles, session records, and point multipliers for fronSOL token holders.
-- **Web app** – Next.js + Solana wallet adapter UI to start focus or rest pods, cancel early, and review on-chain stats in real time.
-- **Reward mechanics** – Completed focus and rest sessions add points. Cancelled pods reduce points and reset streaks. Holding fronSOL (token mint placeholder) enables a configurable multiplier via remaining accounts.
+**frons.id** is a next-generation productivity workspace built on the Solana blockchain. It combines a suite of powerful productivity tools with engaging GameFi mechanics to help you stay focused, motivated, and rewarded for your work. Inspired by the "Work-from-Coffee" concept, frons.id provides a customizable and immersive environment to boost your productivity.
 
-## Getting Started
+
+## ✨ Key Features
+
+frons.id offers a rich set of features designed to enhance your workflow and make work more enjoyable:
+
+###  Productivity Suite
+
+*   **Customizable Pomodoro Timer:** A flexible timer with customizable presets for work and break sessions.
+*   **Session Log:** Automatically tracks your work sessions and provides a detailed history of your activity.
+*   **Rich Text Notepad:** A powerful notepad for taking notes, brainstorming ideas, and organizing your thoughts.
+*   **Bookmark Manager:** Save and organize your favorite websites and resources.
+*   **Music Player:** An integrated music player with YouTube support to help you stay in the flow.
+*   **Ambient Sounds:** A selection of ambient sounds (e.g., coffee shop, rain, forest) to create the perfect work atmosphere.
+*   **To-Do List:** A simple yet effective to-do list to manage your tasks.
+
+### GameFi & Rewards
+
+*   **NFT Profiles:** Showcase your achievements and identity with a unique NFT-based profile.
+*   **Achievements & Levels:** Unlock achievements and level up as you complete work sessions.
+*   **Daily Challenges & Streaks:** Stay motivated with daily challenges and build a work streak.
+*   **Leaderboard:** Compete with other users and climb the ranks of the leaderboard.
+*   **Theme Customization:** Personalize your workspace with a variety of themes and cosmetic items.
+
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
-- Yarn or pnpm (recommended) or npm
-- Rust toolchain + Anchor CLI (v0.29) for building the on-chain program
-- Solana CLI configured for Devnet or Localnet testing
+*   [Node.js](https://nodejs.org/en/) (v18 or higher)
+*   [Yarn](https://yarnpkg.com/)
+*   [Rust](https://www.rust-lang.org/)
+*   [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools)
+*   [Anchor](https://www.anchor-lang.com/)
 
-### Install dependencies
+### Installation
 
-```bash
-cd web
-npm install
-```
+1.  **Clone the repository:**
 
-### Run the web experience
+    ```bash
+    git clone https://github.com/rejoelm/frons.git
+    cd frons
+    ```
 
-```bash
-npm run dev
-```
+2.  **Install web dependencies:**
 
-The app boots on [http://localhost:3000](http://localhost:3000). Connect a Solana wallet (Devnet) to initialize your on-chain profile and start tracking sessions.
+    ```bash
+    cd web
+    yarn install
+    ```
 
-### Build the Anchor program
+3.  **Install program dependencies:**
 
-```bash
-anchor build
-```
+    ```bash
+    cd ../programs/frons
+    cargo build
+    ```
 
-This produces the IDL under `target/idl/frons.json`. The repository includes a checked-in copy for the web client under `web/idl/frons.json`.
+### Running the Application
 
-### Deploying the program
+1.  **Start the web server:**
 
-You can deploy with a local Anchor installation, or by using the bundled Docker helper which avoids managing toolchains manually.
+    ```bash
+    cd web
+    yarn dev
+    ```
 
-#### Option A: Docker-based deployment
+2.  **Deploy the Solana program (optional):**
 
-```bash
-# Build and deploy to devnet (provide a program id if you have one allocated)
-./scripts/deploy-devnet.sh <OPTIONAL_PROGRAM_ID>
-```
+    If you want to interact with the on-chain features, you'll need to deploy the Solana program to your local validator or devnet.
 
-The script mounts your local Solana config (for keypairs) and runs `anchor build` + `anchor deploy` inside the official `coralxyz/anchor:0.29.0` container. Supply a program ID to temporarily update `Anchor.toml`/`declare_id!` while the deployment runs.
+    ```bash
+    solana-test-validator
+    anchor deploy
+    ```
 
-#### Option B: Native CLI
+## 💻 Tech Stack
 
-Update the `declare_id!` and `Anchor.toml` entries with your deployed program ID, then run:
+*   **Frontend:** [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), [Tailwind CSS](https://tailwindcss.com/)
+*   **Backend (Blockchain):** [Solana](https://solana.com/), [Anchor](https://www.anchor-lang.com/)
+*   **Wallet Integration:** [Solana Wallet Adapter](https://github.com/solana-labs/wallet-adapter)
 
-```bash
-anchor deploy --provider.cluster devnet
-```
+## 🖼️ Screenshots
 
-## How points work
+| Feature | Screenshot |
+| --- | --- |
+| Main Workspace | ![Main Workspace](frons_ultra_modern.webp) |
+| GameFi Dashboard | ![GameFi Dashboard](gamefi_dashboard.webp) |
 
-| Session type | Base points | Notes |
-| ------------ | ----------- | ----- |
-| Focus        | +100        | Every fourth consecutive focus pod adds a +40 streak bonus. |
-| Rest         | +15         | Encourages disciplined breaks. |
-| Cancelled    | −60         | Resets focus streak and applies penalty. |
 
-If a fronSOL token account (mint to be announced) with a non-zero balance is passed as a remaining account, the session earns a 1.5× multiplier.
+## 🤝 Contributing
 
-## Folder structure
+Contributions are welcome! Please feel free to submit a pull request or open an issue.
 
-```
-.
-├── Anchor.toml
-├── programs/
-│   └── frons/              # Anchor program source
-├── idl/frons.json          # Anchor IDL for clients
-├── web/                    # Next.js Work-from-Coffee style front-end
-└── README.md
-```
+## 📄 License
 
-## Future improvements
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-- Wire real fronSOL mint once available and surface multiplier eligibility in the UI.
-- Add governance-controlled configuration for reward rates and penalties.
-- Integrate push notifications or calendar sync for distributed coffee shop crews.
