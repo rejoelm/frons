@@ -42,6 +42,19 @@ This produces the IDL under `target/idl/frons.json`. The repository includes a c
 
 ### Deploying the program
 
+You can deploy with a local Anchor installation, or by using the bundled Docker helper which avoids managing toolchains manually.
+
+#### Option A: Docker-based deployment
+
+```bash
+# Build and deploy to devnet (provide a program id if you have one allocated)
+./scripts/deploy-devnet.sh <OPTIONAL_PROGRAM_ID>
+```
+
+The script mounts your local Solana config (for keypairs) and runs `anchor build` + `anchor deploy` inside the official `coralxyz/anchor:0.29.0` container. Supply a program ID to temporarily update `Anchor.toml`/`declare_id!` while the deployment runs.
+
+#### Option B: Native CLI
+
 Update the `declare_id!` and `Anchor.toml` entries with your deployed program ID, then run:
 
 ```bash
