@@ -1,0 +1,96 @@
+{
+  "version": "0.1.0",
+  "name": "frons",
+  "instructions": [
+    {
+      "name": "initializeUser",
+      "accounts": [
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "userProfile", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": []
+    },
+    {
+      "name": "recordSession",
+      "accounts": [
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "userProfile", "isMut": true, "isSigner": false },
+        { "name": "session", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "kind", "type": { "defined": "SessionKind" } },
+        { "name": "startTs", "type": "i64" },
+        { "name": "endTs", "type": { "option": "i64" } },
+        { "name": "plannedDurationSeconds", "type": "i64" }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "UserProfile",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "authority", "type": "publicKey" },
+          { "name": "bump", "type": "u8" },
+          { "name": "totalPoints", "type": "i64" },
+          { "name": "focusSessions", "type": "u64" },
+          { "name": "restSessions", "type": "u64" },
+          { "name": "cancelledSessions", "type": "u64" },
+          { "name": "focusStreak", "type": "u64" },
+          { "name": "longestFocusStreak", "type": "u64" },
+          { "name": "sessionCount", "type": "u64" },
+          { "name": "lastSessionTimestamp", "type": "i64" },
+          { "name": "totalFocusDuration", "type": "i64" },
+          { "name": "totalRestDuration", "type": "i64" }
+        ]
+      }
+    },
+    {
+      "name": "SessionRecord",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "user", "type": "publicKey" },
+          { "name": "index", "type": "u64" },
+          { "name": "kind", "type": { "defined": "SessionKind" } },
+          { "name": "startTs", "type": "i64" },
+          { "name": "endTs", "type": { "option": "i64" } },
+          { "name": "plannedDurationSeconds", "type": "i64" },
+          { "name": "actualDurationSeconds", "type": { "option": "i64" } },
+          { "name": "pointsDelta", "type": "i64" },
+          { "name": "multiplierAppliedBps", "type": "i64" },
+          { "name": "bump", "type": "u8" },
+          { "name": "recordedAt", "type": "i64" }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "SessionKind",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          { "name": "Focus" },
+          { "name": "Rest" },
+          { "name": "Cancelled" }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    { "code": 6000, "name": "MissingBump", "msg": "Unable to read PDA bump" },
+    { "code": 6001, "name": "SessionStartInFuture", "msg": "Session start time cannot be too far in the future" },
+    { "code": 6002, "name": "InvalidPlannedDuration", "msg": "Invalid planned duration provided" },
+    { "code": 6003, "name": "InvalidEndTime", "msg": "Invalid end time provided" },
+    { "code": 6004, "name": "MathOverflow", "msg": "Overflow while updating productivity stats" },
+    { "code": 6005, "name": "InvalidFronSolAccount", "msg": "Provided fronSOL token account is invalid" },
+    { "code": 6006, "name": "EmptyFronSolAccount", "msg": "Provided fronSOL token account has no balance" }
+  ],
+  "metadata": {
+    "address": "FroNs1111111111111111111111111111111111111"
+  }
+}

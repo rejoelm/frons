@@ -1,0 +1,9 @@
+{
+  "name": "fronSOL Productivity Pods",
+  "short_name": "fronSOL Pods",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020817",
+  "theme_color": "#10b981",
+  "description": "Work-from-Coffee inspired Solana dApp rewarding disciplined pomodoro sessions."
+}

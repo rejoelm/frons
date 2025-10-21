@@ -1,0 +1,17 @@
+[package]
+name = "frons"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "frons"
+
+[features]
+no-entrypoint = []
+no-idl = []
+idl-build = []
+
+[dependencies]
+anchor-lang = "0.29.0"
+anchor-spl = { version = "0.29.0", features = ["token"] }
