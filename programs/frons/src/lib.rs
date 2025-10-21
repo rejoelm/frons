@@ -2,7 +2,7 @@ use anchor_lang::prelude::*;
 use anchor_lang::solana_program::clock::Clock;
 use anchor_spl::token::TokenAccount;
 
-declare_id!("FroNs1111111111111111111111111111111111111");
+declare_id!("95eTYR6AW9u7RExdHmZwr7LuLbgZM83aqAUkEFV5me89");
 
 const SESSION_SEED: &[u8] = b"session";
 const USER_PROFILE_SEED: &[u8] = b"user_profile";

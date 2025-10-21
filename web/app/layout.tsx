@@ -19,16 +19,26 @@ export default function RootLayout({
       <body className="bg-slate-950 text-slate-100 min-h-screen">
         <Providers>
           <div className="max-w-5xl mx-auto px-6 py-10 flex flex-col gap-8">
-            <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <h1 className="text-3xl font-semibold tracking-tight">Work from Coffee • fronSOL Pods</h1>
-                <p className="text-slate-300 text-sm md:text-base">
-                  Track each focus, rest, and cancelled podomoro directly on-chain. Earn or lose points based on your discipline.
-                </p>
+            <header className="flex flex-col gap-4">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                  <h1 className="text-3xl font-semibold tracking-tight">Work from Coffee • fronSOL Pods</h1>
+                  <p className="text-slate-300 text-sm md:text-base">
+                    Track each focus, rest, and cancelled podomoro directly on-chain. Earn or lose points based on your discipline.
+                  </p>
+                </div>
+                <div className="md:self-end">
+                  <p className="text-xs uppercase text-slate-400">Solana Devnet</p>
+                </div>
               </div>
-              <div className="md:self-end">
-                <p className="text-xs uppercase text-slate-400">Solana Devnet</p>
-              </div>
+              <nav className="flex gap-4 border-b border-slate-800 pb-4">
+                <a href="/" className="px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-emerald-400 transition font-semibold">
+                  ⏱️ Timer
+                </a>
+                <a href="/gamefi" className="px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-emerald-400 transition font-semibold">
+                  🎮 GameFi
+                </a>
+              </nav>
             </header>
             <main className="flex-1">{children}</main>
             <footer className="text-xs text-slate-500 text-center pb-6">

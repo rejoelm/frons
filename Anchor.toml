@@ -1,5 +1,8 @@
 [programs.localnet]
-frons = "FroNs1111111111111111111111111111111111111"
+frons = "95eTYR6AW9u7RExdHmZwr7LuLbgZM83aqAUkEFV5me89"
+
+[programs.devnet]
+frons = "95eTYR6AW9u7RExdHmZwr7LuLbgZM83aqAUkEFV5me89"
 
 [registry]
 url = "https://anchor.projectserum.com"
