@@ -10,7 +10,6 @@ import { NotesApp } from "@/components/apps-new/notes-app";
 import { MusicApp } from "@/components/apps-new/music-app";
 import { StatsApp } from "@/components/apps-new/stats-app";
 import { FocusApp } from "@/components/apps-new/focus-app";
-import { GameFiApp } from "@/components/apps-new/gamefi-app";
 import { FloatingXPNotification, useXPNotifications } from "@/components/gamefi/floating-xp-notification";
 import { Timer, CheckSquare, StickyNote, Music, BarChart3, Coffee, Trophy } from "lucide-react";
 
@@ -27,7 +26,6 @@ const appComponents = {
   music: MusicApp,
   stats: StatsApp,
   focus: FocusApp,
-  gamefi: GameFiApp,
 };
 
 const appIcons = {
@@ -37,7 +35,6 @@ const appIcons = {
   music: Music,
   stats: BarChart3,
   focus: Coffee,
-  gamefi: Trophy,
 };
 
 const appTitles = {
@@ -47,7 +44,6 @@ const appTitles = {
   music: "Ambient Sounds",
   stats: "Productivity Stats",
   focus: "Focus Mode",
-  gamefi: "GameFi Hub",
 };
 
 const appDefaultSizes = {
@@ -57,7 +53,6 @@ const appDefaultSizes = {
   music: { width: 500, height: 550 },
   stats: { width: 600, height: 650 },
   focus: { width: 500, height: 600 },
-  gamefi: { width: 750, height: 750 },
 };
 
 export default function WorkspacePage() {
@@ -110,12 +105,12 @@ export default function WorkspacePage() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=2078&auto=format&fit=crop')`,
+          backgroundImage: `url('/background/bg-1.webp')`,
         }}
       />
       
-      {/* Subtle Dark Overlay for Readability */}
-      <div className="absolute inset-0 bg-black/20" />
+      {/* Dark Overlay for Readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/40" />
 
       {/* Top Menu Bar */}
       <TopMenuBar
@@ -162,46 +157,18 @@ export default function WorkspacePage() {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="text-center max-w-2xl px-8">
             <div className="mb-6">
-              <div className="inline-flex items-center justify-center w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl shadow-2xl">
-                <span className="text-white text-6xl font-bold">F</span>
+              <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-orange-500 to-amber-600 rounded-3xl shadow-2xl mb-6">
+                <span className="text-white text-5xl font-bold">F</span>
               </div>
             </div>
-            <h1 className="text-7xl font-bold mb-6 text-white drop-shadow-lg">
+            <h1 className="text-6xl mb-4 bg-gradient-to-r from-white via-orange-100 to-amber-100 bg-clip-text text-transparent font-bold">
               Welcome to frons.id
             </h1>
-            <p className="text-2xl text-white/90 mb-12 drop-shadow-md">
-              Your immersive productivity workspace on Solana
+            <p className="text-xl text-white/80 mb-8">
+              Your immersive productivity workspace
             </p>
-            <div className="text-white/70 mb-8 text-lg drop-shadow">
+            <div className="text-white/60 mb-6">
               Click an app icon on the right to get started →
-            </div>
-            
-            {/* Try GameFi Button */}
-            <button
-              onClick={() => launchApp('gamefi')}
-              className="pointer-events-auto px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white text-lg rounded-2xl shadow-2xl transition-all hover:scale-105 flex items-center gap-3 mx-auto"
-            >
-              <Trophy className="w-6 h-6" />
-              Try GameFi Hub with NFT Profiles
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* NFT Feature Badge - Only when no windows open */}
-      {openWindows.length === 0 && (
-        <div className="fixed bottom-6 right-32 z-50">
-          <div className="p-5 bg-gradient-to-br from-purple-500/95 to-pink-500/95 backdrop-blur-md rounded-2xl border border-white/20 text-white shadow-2xl max-w-sm">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Trophy className="w-6 h-6" />
-              </div>
-              <div>
-                <div className="font-bold text-lg mb-2">New: NFT Profiles! 🎨</div>
-                <div className="text-sm text-white/95 leading-relaxed">
-                  Connect your Solana NFTs as profile pics, decorated with achievement frames
-                </div>
-              </div>
             </div>
           </div>
         </div>

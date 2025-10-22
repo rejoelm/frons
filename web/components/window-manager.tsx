@@ -86,18 +86,18 @@ export function Window({
       }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ type: "spring", damping: 25, stiffness: 300 }}
-      className="fixed bg-white/95 backdrop-blur-xl rounded-xl shadow-2xl overflow-hidden"
+      className="fixed bg-amber-50/98 backdrop-blur-xl rounded-xl shadow-2xl overflow-hidden border border-amber-200/30"
       style={{ zIndex }}
       onMouseDown={() => onFocus()}
     >
       {/* Window Header */}
       <div
-        className="window-header flex items-center justify-between px-4 py-3 bg-gradient-to-r from-amber-50/50 to-orange-50/50 border-b border-amber-200/50 cursor-move select-none"
+        className="window-header flex items-center justify-between px-4 py-3 bg-gradient-to-r from-amber-100/80 to-orange-100/80 border-b border-amber-300/40 cursor-move select-none"
         onMouseDown={handleMouseDown}
       >
         <div className="flex items-center gap-2">
-          {icon && <div className="text-amber-700">{icon}</div>}
-          <span className="text-amber-900">{title}</span>
+          {icon && <div className="text-orange-700">{icon}</div>}
+          <span className="text-amber-900 font-medium">{title}</span>
         </div>
         <div className="flex items-center gap-2">
           <button
